@@ -18,14 +18,14 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="h-screen w-screen bg-black flex overflow-hidden">
+    <div className="fixed inset-0 bg-black flex overflow-hidden">
       {/* Left Sidebar - Chat Agent with Session Switcher (25%) */}
-      <aside className="w-1/4 h-full">
+      <aside className="w-1/4 h-full overflow-hidden">
         <ChatAgent />
       </aside>
 
       {/* Main Canvas - Map with Overlays (75%) */}
-      <main className="flex-1 h-full relative">
+      <main className="flex-1 h-full relative overflow-hidden">
         {/* Mapbox Map */}
         <CommandCenterMap />
 

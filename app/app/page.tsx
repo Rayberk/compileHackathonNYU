@@ -1,12 +1,10 @@
 "use client";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/navbar";
 
 export default function Home() {
   return (
     <main className="bg-black text-white overflow-hidden">
-      <Navbar />
 
       {/* Section 1: The Hero - The Vision */}
       <section className="relative h-screen flex items-center justify-center px-6">

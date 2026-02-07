@@ -52,7 +52,7 @@
       "hash": "9441c4ffedee",
       "location": {
         "filePath": "layout.tsx",
-        "line": 13,
+        "line": 14,
         "column": 9
       }
     },
@@ -66,7 +66,7 @@
       "hash": "bd97ac5b2ceb",
       "location": {
         "filePath": "layout.tsx",
-        "line": 14,
+        "line": 15,
         "column": 15
       }
     },
@@ -1047,7 +1047,7 @@
       "hash": "4b3dc3e9250f",
       "location": {
         "filePath": "page.tsx",
-        "line": 257,
+        "line": 255,
         "column": 18
       }
     },
@@ -1061,7 +1061,7 @@
       "hash": "f0dcfc39b128",
       "location": {
         "filePath": "page.tsx",
-        "line": 237,
+        "line": 235,
         "column": 62
       }
     },
@@ -1526,7 +1526,7 @@
       "hash": "9c6ef12fa97c",
       "location": {
         "filePath": "page.tsx",
-        "line": 28,
+        "line": 26,
         "column": 12
       }
     },
@@ -1540,7 +1540,7 @@
       "hash": "449e2c4ef0a2",
       "location": {
         "filePath": "page.tsx",
-        "line": 37,
+        "line": 35,
         "column": 12
       }
     },
@@ -1554,7 +1554,7 @@
       "hash": "0131cc594a5d",
       "location": {
         "filePath": "page.tsx",
-        "line": 52,
+        "line": 50,
         "column": 12
       }
     },
@@ -1568,7 +1568,7 @@
       "hash": "f8d914e35305",
       "location": {
         "filePath": "page.tsx",
-        "line": 72,
+        "line": 70,
         "column": 55
       }
     },
@@ -1582,7 +1582,7 @@
       "hash": "ed551eb39e20",
       "location": {
         "filePath": "page.tsx",
-        "line": 317,
+        "line": 315,
         "column": 14
       }
     },
@@ -1596,7 +1596,7 @@
       "hash": "81775c80d965",
       "location": {
         "filePath": "page.tsx",
-        "line": 72,
+        "line": 70,
         "column": 122
       }
     },
@@ -1610,7 +1610,7 @@
       "hash": "2270a8b1393d",
       "location": {
         "filePath": "page.tsx",
-        "line": 74,
+        "line": 72,
         "column": 20
       }
     },
@@ -1624,7 +1624,7 @@
       "hash": "cec5d926f7eb",
       "location": {
         "filePath": "page.tsx",
-        "line": 76,
+        "line": 74,
         "column": 20
       }
     },
@@ -1638,7 +1638,7 @@
       "hash": "42ce15ecb316",
       "location": {
         "filePath": "page.tsx",
-        "line": 78,
+        "line": 76,
         "column": 20
       }
     },
@@ -1652,7 +1652,7 @@
       "hash": "2e450a571e0d",
       "location": {
         "filePath": "page.tsx",
-        "line": 92,
+        "line": 90,
         "column": 12
       }
     },
@@ -1666,7 +1666,7 @@
       "hash": "f4c32c75942e",
       "location": {
         "filePath": "page.tsx",
-        "line": 107,
+        "line": 105,
         "column": 12
       }
     },
@@ -1680,7 +1680,7 @@
       "hash": "c3273bf3f09b",
       "location": {
         "filePath": "page.tsx",
-        "line": 122,
+        "line": 120,
         "column": 20
       }
     },
@@ -1694,7 +1694,7 @@
       "hash": "7d90ab46e27c",
       "location": {
         "filePath": "page.tsx",
-        "line": 125,
+        "line": 123,
         "column": 57
       }
     },
@@ -1708,7 +1708,7 @@
       "hash": "b6afb4c1d497",
       "location": {
         "filePath": "page.tsx",
-        "line": 127,
+        "line": 125,
         "column": 51
       }
     },
@@ -1722,7 +1722,7 @@
       "hash": "e683f72192ed",
       "location": {
         "filePath": "page.tsx",
-        "line": 128,
+        "line": 126,
         "column": 53
       }
     },
@@ -1736,7 +1736,7 @@
       "hash": "402d428438b9",
       "location": {
         "filePath": "page.tsx",
-        "line": 143,
+        "line": 141,
         "column": 12
       }
     },
@@ -1750,7 +1750,7 @@
       "hash": "77221cbd6d25",
       "location": {
         "filePath": "page.tsx",
-        "line": 158,
+        "line": 156,
         "column": 12
       }
     },
@@ -1764,7 +1764,7 @@
       "hash": "b866a53024fd",
       "location": {
         "filePath": "page.tsx",
-        "line": 172,
+        "line": 170,
         "column": 65
       }
     },
@@ -1778,7 +1778,7 @@
       "hash": "5b5b2432b8c3",
       "location": {
         "filePath": "page.tsx",
-        "line": 173,
+        "line": 171,
         "column": 53
       }
     },
@@ -1792,7 +1792,7 @@
       "hash": "a1b5dc4dd48e",
       "location": {
         "filePath": "page.tsx",
-        "line": 181,
+        "line": 179,
         "column": 65
       }
     },
@@ -1806,7 +1806,7 @@
       "hash": "02e5b35029e4",
       "location": {
         "filePath": "page.tsx",
-        "line": 182,
+        "line": 180,
         "column": 53
       }
     },
@@ -1820,7 +1820,7 @@
       "hash": "aec420172ebd",
       "location": {
         "filePath": "page.tsx",
-        "line": 190,
+        "line": 188,
         "column": 65
       }
     },
@@ -1834,7 +1834,7 @@
       "hash": "debbcea7ae57",
       "location": {
         "filePath": "page.tsx",
-        "line": 191,
+        "line": 189,
         "column": 53
       }
     },
@@ -1848,7 +1848,7 @@
       "hash": "241d69d0cd59",
       "location": {
         "filePath": "page.tsx",
-        "line": 203,
+        "line": 201,
         "column": 12
       }
     },
@@ -1862,7 +1862,7 @@
       "hash": "31d8c7a44a54",
       "location": {
         "filePath": "page.tsx",
-        "line": 218,
+        "line": 216,
         "column": 12
       }
     },
@@ -1876,7 +1876,7 @@
       "hash": "7b48cc050d7b",
       "location": {
         "filePath": "page.tsx",
-        "line": 232,
+        "line": 230,
         "column": 83
       }
     },
@@ -1890,7 +1890,7 @@
       "hash": "55eb5b1b16fd",
       "location": {
         "filePath": "page.tsx",
-        "line": 234,
+        "line": 232,
         "column": 20
       }
     },
@@ -1904,7 +1904,7 @@
       "hash": "b7483ca2eb2b",
       "location": {
         "filePath": "page.tsx",
-        "line": 240,
+        "line": 238,
         "column": 18
       }
     },
@@ -1918,7 +1918,7 @@
       "hash": "30a6eb4ec9c8",
       "location": {
         "filePath": "page.tsx",
-        "line": 250,
+        "line": 248,
         "column": 20
       }
     },
@@ -1932,7 +1932,7 @@
       "hash": "55fd54a9fba7",
       "location": {
         "filePath": "page.tsx",
-        "line": 252,
+        "line": 250,
         "column": 83
       }
     },
@@ -1946,7 +1946,7 @@
       "hash": "b8da03bc6028",
       "location": {
         "filePath": "page.tsx",
-        "line": 254,
+        "line": 252,
         "column": 62
       }
     },
@@ -1960,7 +1960,7 @@
       "hash": "062ba2b78f0b",
       "location": {
         "filePath": "page.tsx",
-        "line": 256,
+        "line": 254,
         "column": 18
       }
     },
@@ -1974,7 +1974,7 @@
       "hash": "170a60fdfcae",
       "location": {
         "filePath": "page.tsx",
-        "line": 270,
+        "line": 268,
         "column": 12
       }
     },
@@ -1988,7 +1988,7 @@
       "hash": "7e12a22e0a83",
       "location": {
         "filePath": "page.tsx",
-        "line": 285,
+        "line": 283,
         "column": 12
       }
     },
@@ -2002,7 +2002,7 @@
       "hash": "cb239021b209",
       "location": {
         "filePath": "page.tsx",
-        "line": 300,
+        "line": 298,
         "column": 16
       }
     },
@@ -2016,7 +2016,7 @@
       "hash": "80dd3ae9a614",
       "location": {
         "filePath": "page.tsx",
-        "line": 315,
+        "line": 313,
         "column": 16
       }
     },
@@ -2030,7 +2030,7 @@
       "hash": "e97396d79526",
       "location": {
         "filePath": "page.tsx",
-        "line": 319,
+        "line": 317,
         "column": 16
       }
     },
@@ -2181,10 +2181,38 @@
         "line": 48,
         "column": 8
       }
+    },
+    "8344ddae50bc": {
+      "type": "content",
+      "sourceText": "UAE Transit",
+      "context": {
+        "componentName": "Navbar",
+        "filePath": "../components/navbar.tsx"
+      },
+      "hash": "8344ddae50bc",
+      "location": {
+        "filePath": "../components/navbar.tsx",
+        "line": 68,
+        "column": 12
+      }
+    },
+    "01306d9efa6c": {
+      "type": "content",
+      "sourceText": "Launch App",
+      "context": {
+        "componentName": "Navbar",
+        "filePath": "../components/navbar.tsx"
+      },
+      "hash": "01306d9efa6c",
+      "location": {
+        "filePath": "../components/navbar.tsx",
+        "line": 123,
+        "column": 14
+      }
     }
   },
   "stats": {
-    "totalEntries": 154,
-    "lastUpdated": "2026-02-07T15:25:55.030Z"
+    "totalEntries": 156,
+    "lastUpdated": "2026-02-07T15:30:05.271Z"
   }
 }

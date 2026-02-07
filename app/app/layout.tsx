@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { LingoProvider } from "@lingo.dev/compiler/react";
+import { Navbar } from "@/components/navbar";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -35,7 +36,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <Navbar />
+            <main className="pt-0">
+              {children}
+            </main>
           </ThemeProvider>
         </LingoProvider>
       </body>
