@@ -6,17 +6,16 @@ import pandas as pd
 # 1. Load Data
 df = pd.read_csv('data/dubai_data.csv')
 # Features: everything except the 'neighborhood' and 'priority_score'
-X = torch.tensor(df[['population_density', 'job_count', 'growth_rate', 'current_bus_stops']].values, dtype=torch.float32)
+X = torch.tensor(df[['population']].values, dtype=torch.float32)
 # Target: the 'priority_score'
-y = torch.tensor(df[['priority_score']].values, dtype=torch.float32)
+y = torch.tensor(df[['population']].values, dtype=torch.float32)
 
-# 2. Define the Model
+# Look for a line like this and change the 4 to a 1
 model = nn.Sequential(
-    nn.Linear(4, 8), # 4 inputs -> 8 hidden neurons
+    nn.Linear(1, 8),  # Change this from 4 to 1
     nn.ReLU(),
-    nn.Linear(8, 1)  # 8 hidden -> 1 output (the score)
+    nn.Linear(8, 1)
 )
-
 # 3. Loss and Optimizer
 criterion = nn.MSELoss() # Mean Squared Error (good for predicting scores)
 optimizer = optim.Adam(model.parameters(), lr=0.01)

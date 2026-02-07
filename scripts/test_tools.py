@@ -1,3 +1,10 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Now your original imports will work
+from scripts.agent_tools import get_busyness_prediction
+
 from scripts.agent_tools import get_busyness_prediction, get_neighborhood_business_growth
 
 # Test 1: Check the PyTorch Model
