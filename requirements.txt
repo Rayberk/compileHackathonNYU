@@ -3,3 +3,4 @@ torchvision
 flask
 pandas
 requests
+geopandas
