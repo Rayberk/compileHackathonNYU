@@ -5,6 +5,7 @@ Run this to verify the agent is working correctly.
 """
 import asyncio
 import httpx
+import time
 
 BASE_URL = "http://localhost:8080"
 
@@ -105,8 +106,13 @@ async def main():
             print("\n❌ Failed to create session")
             return
         
+        print("⏳ Waiting 2s for rate limit...")
+        time.sleep(2)
+        
         # Test chat
         await test_chat(session_id)
+        print("⏳ Waiting 10s for rate limit...")
+        time.sleep(10)
         
         # Test chat with coordinates
         await test_chat_with_coordinates(session_id)
