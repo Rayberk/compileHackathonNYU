@@ -10,8 +10,23 @@ from dotenv import load_dotenv
 _agent_dir = Path(__file__).parent
 load_dotenv(_agent_dir / ".env")
 
+api_key = os.getenv("GOOGLE_API_KEY")
+if api_key:
+    print(f"🔑 Loaded Google API Key: {api_key[:8]}...{api_key[-4:]}")
+    # Force ADK/GenAI to use this key and ignore potentially stale cloud credentials
+    os.environ["GENAI_API_KEY"] = api_key
+    if "GOOGLE_APPLICATION_CREDENTIALS" in os.environ:
+        print("⚠️  Warning: GOOGLE_APPLICATION_CREDENTIALS found. Unsetting to prefer API Key.")
+        del os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
+else:
+    print("❌ Google API Key NOT found in environment!")
+
 from google.adk.agents import Agent
 from google.adk.tools import google_search
+# Ensure genai is configured (ADK might do this, but being explicit helps)
+import google.genai as genai
+
+client = genai.Client(api_key=api_key)
 
 from .tools import get_ml_predictions, analyze_transport_coverage, get_area_statistics
 
@@ -58,6 +73,6 @@ root_agent = Agent(
         get_ml_predictions,
         analyze_transport_coverage,
         get_area_statistics,
-        google_search
+        # google_search  # Removed temporarily for debugging
     ]
 )
