@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useLingoContext } from "@/lib/lingo/context";
 
 export function LanguageSwitcher() {
-  const [locale, setLocale] = useState("en");
+  const { locale, setLocale } = useLingoContext();
 
   const handleChange = (newLocale: string) => {
     setLocale(newLocale);
