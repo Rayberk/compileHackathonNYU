@@ -1355,7 +1355,7 @@
       "hash": "a966d78730a3",
       "location": {
         "filePath": "../components/language-switcher.tsx",
-        "line": 9,
+        "line": 13,
         "column": 6
       }
     },
@@ -1369,7 +1369,7 @@
       "hash": "409b73adc439",
       "location": {
         "filePath": "../components/language-switcher.tsx",
-        "line": 17,
+        "line": 21,
         "column": 8
       }
     },
@@ -1383,13 +1383,13 @@
       "hash": "63ed897f3e7a",
       "location": {
         "filePath": "../components/language-switcher.tsx",
-        "line": 18,
+        "line": 22,
         "column": 8
       }
     }
   },
   "stats": {
     "totalEntries": 98,
-    "lastUpdated": "2026-02-07T15:12:52.745Z"
+    "lastUpdated": "2026-02-07T15:13:55.042Z"
   }
 }
