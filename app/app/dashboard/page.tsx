@@ -2,7 +2,8 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { CommandCenterMap } from "@/components/command-center/command-center-map";
 import { ChatAgent } from "@/components/command-center/chat-agent";
-import { LanguageSwitcher } from "@/components/language-switcher";
+import { InsightsTray } from "@/components/command-center/insights-tray";
+import { ControlPanel } from "@/components/command-center/control-panel";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -17,35 +18,23 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="h-screen w-screen bg-slate-950 flex flex-col overflow-hidden">
-      {/* Header */}
-      <header className="h-16 bg-slate-900 border-b border-slate-800 flex items-center justify-between px-6">
-        <div>
-          <h1 className="text-xl font-bold text-teal-400">
-            UAE Transit Navigator
-          </h1>
-          <p className="text-xs text-slate-400">RTA Command Center</p>
-        </div>
-        <div className="flex items-center gap-4">
-          <LanguageSwitcher />
-          <div className="text-sm text-slate-400">
-            {user.email}
-          </div>
-        </div>
-      </header>
+    <div className="h-screen w-screen bg-black flex overflow-hidden">
+      {/* Left Sidebar - Chat Agent with Session Switcher (25%) */}
+      <aside className="w-1/4 h-full">
+        <ChatAgent />
+      </aside>
 
-      {/* Main content - 25% Sidebar / 75% Map */}
-      <div className="flex-1 grid grid-cols-[25%_75%] overflow-hidden">
-        {/* Left sidebar - AI Chat Agent */}
-        <aside className="h-full">
-          <ChatAgent />
-        </aside>
+      {/* Main Canvas - Map with Overlays (75%) */}
+      <main className="flex-1 h-full relative">
+        {/* Mapbox Map */}
+        <CommandCenterMap />
 
-        {/* Main map area */}
-        <main className="h-full relative">
-          <CommandCenterMap />
-        </main>
-      </div>
+        {/* Bottom Insights Tray */}
+        <InsightsTray />
+
+        {/* Right Control Panel */}
+        <ControlPanel />
+      </main>
     </div>
   );
 }

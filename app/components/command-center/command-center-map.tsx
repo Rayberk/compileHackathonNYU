@@ -56,6 +56,7 @@ export function CommandCenterMap() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const [showDensity, setShowDensity] = useState(true);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
     if (!mapContainer.current || map.current) return;
@@ -129,6 +130,8 @@ export function CommandCenterMap() {
         layout: { visibility: showDensity ? "visible" : "none" },
         paint: HEATMAP_CONFIG,
       });
+
+      setMapLoaded(true);
     });
 
     map.current = initializeMap;
@@ -140,14 +143,17 @@ export function CommandCenterMap() {
 
   // Update heatmap visibility
   useEffect(() => {
-    if (map.current && map.current.getLayer("density-heatmap")) {
-      map.current.setLayoutProperty(
-        "density-heatmap",
-        "visibility",
-        showDensity ? "visible" : "none"
-      );
+    if (mapLoaded && map.current && map.current.isStyleLoaded()) {
+      const layer = map.current.getLayer("density-heatmap");
+      if (layer) {
+        map.current.setLayoutProperty(
+          "density-heatmap",
+          "visibility",
+          showDensity ? "visible" : "none"
+        );
+      }
     }
-  }, [showDensity]);
+  }, [showDensity, mapLoaded]);
 
   return (
     <div className="relative h-full w-full">

@@ -1047,7 +1047,7 @@
       "hash": "4b3dc3e9250f",
       "location": {
         "filePath": "page.tsx",
-        "line": 97,
+        "line": 257,
         "column": 18
       }
     },
@@ -1061,8 +1061,8 @@
       "hash": "f0dcfc39b128",
       "location": {
         "filePath": "page.tsx",
-        "line": 98,
-        "column": 18
+        "line": 237,
+        "column": 62
       }
     },
     "7d5161cf4d69": {
@@ -1386,10 +1386,805 @@
         "line": 22,
         "column": 8
       }
+    },
+    "d51b2d44760c": {
+      "type": "content",
+      "sourceText": "UAE Transit Navigator",
+      "context": {
+        "componentName": "DashboardPage",
+        "filePath": "dashboard/page.tsx"
+      },
+      "hash": "d51b2d44760c",
+      "location": {
+        "filePath": "dashboard/page.tsx",
+        "line": 24,
+        "column": 10
+      }
+    },
+    "80a3bdab84a3": {
+      "type": "content",
+      "sourceText": "RTA Command Center",
+      "context": {
+        "componentName": "DashboardPage",
+        "filePath": "dashboard/page.tsx"
+      },
+      "hash": "80a3bdab84a3",
+      "location": {
+        "filePath": "dashboard/page.tsx",
+        "line": 27,
+        "column": 10
+      }
+    },
+    "f8e4d38d8222": {
+      "type": "content",
+      "sourceText": "Map Layers",
+      "context": {
+        "componentName": "CommandCenterMap",
+        "filePath": "../components/command-center/command-center-map.tsx"
+      },
+      "hash": "f8e4d38d8222",
+      "location": {
+        "filePath": "../components/command-center/command-center-map.tsx",
+        "line": 166,
+        "column": 8
+      }
+    },
+    "c8e2b159c985": {
+      "type": "content",
+      "sourceText": "Commuter Heatmap",
+      "context": {
+        "componentName": "CommandCenterMap",
+        "filePath": "../components/command-center/command-center-map.tsx"
+      },
+      "hash": "c8e2b159c985",
+      "location": {
+        "filePath": "../components/command-center/command-center-map.tsx",
+        "line": 168,
+        "column": 10
+      }
+    },
+    "0e800aeb4230": {
+      "type": "content",
+      "sourceText": "AI Planning Agent",
+      "context": {
+        "componentName": "ChatAgent",
+        "filePath": "../components/command-center/chat-agent.tsx"
+      },
+      "hash": "0e800aeb4230",
+      "location": {
+        "filePath": "../components/command-center/chat-agent.tsx",
+        "line": 63,
+        "column": 8
+      }
+    },
+    "c06d2e96aa37": {
+      "type": "content",
+      "sourceText": "Transit optimization assistant",
+      "context": {
+        "componentName": "ChatAgent",
+        "filePath": "../components/command-center/chat-agent.tsx"
+      },
+      "hash": "c06d2e96aa37",
+      "location": {
+        "filePath": "../components/command-center/chat-agent.tsx",
+        "line": 64,
+        "column": 8
+      }
+    },
+    "cab31fc46393": {
+      "type": "attribute",
+      "sourceText": "Ask about transit planning...",
+      "context": {
+        "attributeName": "placeholder",
+        "componentName": "ChatAgent",
+        "filePath": "../components/command-center/chat-agent.tsx"
+      },
+      "hash": "cab31fc46393",
+      "location": {
+        "filePath": "../components/command-center/chat-agent.tsx",
+        "line": 265,
+        "column": 10
+      }
+    },
+    "1aa3a55f558b": {
+      "type": "attribute",
+      "sourceText": "Active Routes",
+      "context": {
+        "attributeName": "title",
+        "componentName": "StatsOverlay",
+        "filePath": "../components/command-center/stats-overlay.tsx"
+      },
+      "hash": "1aa3a55f558b",
+      "location": {
+        "filePath": "../components/command-center/stats-overlay.tsx",
+        "line": 30,
+        "column": 8
+      }
+    },
+    "5c9ce3f3924b": {
+      "type": "attribute",
+      "sourceText": "Hotspots",
+      "context": {
+        "attributeName": "title",
+        "componentName": "StatsOverlay",
+        "filePath": "../components/command-center/stats-overlay.tsx"
+      },
+      "hash": "5c9ce3f3924b",
+      "location": {
+        "filePath": "../components/command-center/stats-overlay.tsx",
+        "line": 35,
+        "column": 8
+      }
+    },
+    "9c6ef12fa97c": {
+      "type": "content",
+      "sourceText": "Offering intelligent transportation optimization systems.",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "9c6ef12fa97c",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 28,
+        "column": 12
+      }
+    },
+    "449e2c4ef0a2": {
+      "type": "content",
+      "sourceText": "The future of Dubai's transit, powered by PostGIS and Human-Centric AI.",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "449e2c4ef0a2",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 37,
+        "column": 12
+      }
+    },
+    "0131cc594a5d": {
+      "type": "content",
+      "sourceText": "The City. In real-time.",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "0131cc594a5d",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 52,
+        "column": 12
+      }
+    },
+    "f8d914e35305": {
+      "type": "content",
+      "sourceText": "Business Bay",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "f8d914e35305",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 72,
+        "column": 55
+      }
+    },
+    "ed551eb39e20": {
+      "type": "content",
+      "sourceText": "•",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "ed551eb39e20",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 317,
+        "column": 14
+      }
+    },
+    "81775c80d965": {
+      "type": "content",
+      "sourceText": "Reem Island",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "81775c80d965",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 72,
+        "column": 122
+      }
+    },
+    "2270a8b1393d": {
+      "type": "content",
+      "sourceText": "142 Routes",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "2270a8b1393d",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 74,
+        "column": 20
+      }
+    },
+    "cec5d926f7eb": {
+      "type": "content",
+      "sourceText": "600 Shelters",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "cec5d926f7eb",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 76,
+        "column": 20
+      }
+    },
+    "42ce15ecb316": {
+      "type": "content",
+      "sourceText": "12 Hotspots",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "42ce15ecb316",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 78,
+        "column": 20
+      }
+    },
+    "2e450a571e0d": {
+      "type": "content",
+      "sourceText": "Total visibility into every bus stop, shelter, and commuter ping across the Emirates.",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "2e450a571e0d",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 92,
+        "column": 12
+      }
+    },
+    "f4c32c75942e": {
+      "type": "content",
+      "sourceText": "Intelligence on speed.",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "f4c32c75942e",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 107,
+        "column": 12
+      }
+    },
+    "c3273bf3f09b": {
+      "type": "content",
+      "sourceText": "AI",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "c3273bf3f09b",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 122,
+        "column": 20
+      }
+    },
+    "7d90ab46e27c": {
+      "type": "content",
+      "sourceText": "\"Agent, where are the AC shelter gaps in Reem Island?\"",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "7d90ab46e27c",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 125,
+        "column": 57
+      }
+    },
+    "b6afb4c1d497": {
+      "type": "content",
+      "sourceText": "Analyzing 3,247 commuter pings in Reem Island district...",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "b6afb4c1d497",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 127,
+        "column": 51
+      }
+    },
+    "e683f72192ed": {
+      "type": "content",
+      "sourceText": "I've identified 4 high-density zones without AC shelter coverage within 500m radius. Coordinates: 25.2048, 55.2708...",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "e683f72192ed",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 128,
+        "column": 53
+      }
+    },
+    "402d428438b9": {
+      "type": "content",
+      "sourceText": "Google Agent SDK integration that predicts transit demand patterns using ML models.",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "402d428438b9",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 143,
+        "column": 12
+      }
+    },
+    "77221cbd6d25": {
+      "type": "content",
+      "sourceText": "Never lose your train of thought.",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "77221cbd6d25",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 158,
+        "column": 12
+      }
+    },
+    "b866a53024fd": {
+      "type": "content",
+      "sourceText": "Business Bay Planning",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "b866a53024fd",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 172,
+        "column": 65
+      }
+    },
+    "5b5b2432b8c3": {
+      "type": "content",
+      "sourceText": "37 messages",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "5b5b2432b8c3",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 173,
+        "column": 53
+      }
+    },
+    "a1b5dc4dd48e": {
+      "type": "content",
+      "sourceText": "AC Shelter Deployment",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "a1b5dc4dd48e",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 181,
+        "column": 65
+      }
+    },
+    "02e5b35029e4": {
+      "type": "content",
+      "sourceText": "22 messages",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "02e5b35029e4",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 182,
+        "column": 53
+      }
+    },
+    "aec420172ebd": {
+      "type": "content",
+      "sourceText": "Reem Island Routes",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "aec420172ebd",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 190,
+        "column": 65
+      }
+    },
+    "debbcea7ae57": {
+      "type": "content",
+      "sourceText": "15 messages",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "debbcea7ae57",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 191,
+        "column": 53
+      }
+    },
+    "241d69d0cd59": {
+      "type": "content",
+      "sourceText": "Multiple planning contexts, seamlessly organized. Switch between projects without losing your flow.",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "241d69d0cd59",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 203,
+        "column": 12
+      }
+    },
+    "31d8c7a44a54": {
+      "type": "content",
+      "sourceText": "Built for the UAE.",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "31d8c7a44a54",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 218,
+        "column": 12
+      }
+    },
+    "7b48cc050d7b": {
+      "type": "content",
+      "sourceText": "English",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "7b48cc050d7b",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 232,
+        "column": 83
+      }
+    },
+    "55eb5b1b16fd": {
+      "type": "content",
+      "sourceText": "EN",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "55eb5b1b16fd",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 234,
+        "column": 20
+      }
+    },
+    "b7483ca2eb2b": {
+      "type": "content",
+      "sourceText": "routes",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "b7483ca2eb2b",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 240,
+        "column": 18
+      }
+    },
+    "30a6eb4ec9c8": {
+      "type": "content",
+      "sourceText": "AR",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "30a6eb4ec9c8",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 250,
+        "column": 20
+      }
+    },
+    "55fd54a9fba7": {
+      "type": "content",
+      "sourceText": "العربية",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "55fd54a9fba7",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 252,
+        "column": 83
+      }
+    },
+    "b8da03bc6028": {
+      "type": "content",
+      "sourceText": "الطرق النشطة",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "b8da03bc6028",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 254,
+        "column": 62
+      }
+    },
+    "062ba2b78f0b": {
+      "type": "content",
+      "sourceText": "طريق",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "062ba2b78f0b",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 256,
+        "column": 18
+      }
+    },
+    "170a60fdfcae": {
+      "type": "content",
+      "sourceText": "Zero-latency localization using Lingo.dev's build-time transformations. Instant switching between Arabic and English.",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "170a60fdfcae",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 270,
+        "column": 12
+      }
+    },
+    "7e12a22e0a83": {
+      "type": "content",
+      "sourceText": "Optimize the Future.",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "7e12a22e0a83",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 285,
+        "column": 12
+      }
+    },
+    "cb239021b209": {
+      "type": "content",
+      "sourceText": "Launch Command Center",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "cb239021b209",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 300,
+        "column": 16
+      }
+    },
+    "80dd3ae9a614": {
+      "type": "content",
+      "sourceText": "RTA Dubai",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "80dd3ae9a614",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 315,
+        "column": 16
+      }
+    },
+    "e97396d79526": {
+      "type": "content",
+      "sourceText": "Abu Dhabi ITC",
+      "context": {
+        "componentName": "Home",
+        "filePath": "page.tsx"
+      },
+      "hash": "e97396d79526",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 319,
+        "column": 16
+      }
+    },
+    "dfab8827d101": {
+      "type": "content",
+      "sourceText": "AI Planning Session",
+      "context": {
+        "componentName": "ChatAgent",
+        "filePath": "../components/command-center/chat-agent.tsx"
+      },
+      "hash": "dfab8827d101",
+      "location": {
+        "filePath": "../components/command-center/chat-agent.tsx",
+        "line": 131,
+        "column": 14
+      }
+    },
+    "df64ab7ab6fc": {
+      "type": "content",
+      "sourceText": "Analyzing transit patterns...",
+      "context": {
+        "componentName": "ChatAgent",
+        "filePath": "../components/command-center/chat-agent.tsx"
+      },
+      "hash": "df64ab7ab6fc",
+      "location": {
+        "filePath": "../components/command-center/chat-agent.tsx",
+        "line": 254,
+        "column": 18
+      }
+    },
+    "ab2b5c811de1": {
+      "type": "attribute",
+      "sourceText": "Toggle Heatmap",
+      "context": {
+        "attributeName": "label",
+        "componentName": "ControlPanel",
+        "filePath": "../components/command-center/control-panel.tsx"
+      },
+      "hash": "ab2b5c811de1",
+      "location": {
+        "filePath": "../components/command-center/control-panel.tsx",
+        "line": 38,
+        "column": 8
+      }
+    },
+    "5e4f2316999a": {
+      "type": "attribute",
+      "sourceText": "ML Prediction",
+      "context": {
+        "attributeName": "label",
+        "componentName": "ControlPanel",
+        "filePath": "../components/command-center/control-panel.tsx"
+      },
+      "hash": "5e4f2316999a",
+      "location": {
+        "filePath": "../components/command-center/control-panel.tsx",
+        "line": 44,
+        "column": 8
+      }
+    },
+    "ffe112a74a1b": {
+      "type": "attribute",
+      "sourceText": "Demand Heat",
+      "context": {
+        "attributeName": "title",
+        "componentName": "InsightsTray",
+        "filePath": "../components/command-center/insights-tray.tsx"
+      },
+      "hash": "ffe112a74a1b",
+      "location": {
+        "filePath": "../components/command-center/insights-tray.tsx",
+        "line": 36,
+        "column": 8
+      }
+    },
+    "b6d86fe87dd5": {
+      "type": "attribute",
+      "sourceText": "High commuter density detected",
+      "context": {
+        "attributeName": "subtitle",
+        "componentName": "InsightsTray",
+        "filePath": "../components/command-center/insights-tray.tsx"
+      },
+      "hash": "b6d86fe87dd5",
+      "location": {
+        "filePath": "../components/command-center/insights-tray.tsx",
+        "line": 36,
+        "column": 8
+      }
+    },
+    "a120c24afc93": {
+      "type": "attribute",
+      "sourceText": "Infrastructure Gap",
+      "context": {
+        "attributeName": "title",
+        "componentName": "InsightsTray",
+        "filePath": "../components/command-center/insights-tray.tsx"
+      },
+      "hash": "a120c24afc93",
+      "location": {
+        "filePath": "../components/command-center/insights-tray.tsx",
+        "line": 42,
+        "column": 8
+      }
+    },
+    "cdd338e1bbf4": {
+      "type": "attribute",
+      "sourceText": "Commuters without AC shelter access",
+      "context": {
+        "attributeName": "subtitle",
+        "componentName": "InsightsTray",
+        "filePath": "../components/command-center/insights-tray.tsx"
+      },
+      "hash": "cdd338e1bbf4",
+      "location": {
+        "filePath": "../components/command-center/insights-tray.tsx",
+        "line": 42,
+        "column": 8
+      }
+    },
+    "273f23811f8b": {
+      "type": "attribute",
+      "sourceText": "Optimization Score",
+      "context": {
+        "attributeName": "title",
+        "componentName": "InsightsTray",
+        "filePath": "../components/command-center/insights-tray.tsx"
+      },
+      "hash": "273f23811f8b",
+      "location": {
+        "filePath": "../components/command-center/insights-tray.tsx",
+        "line": 48,
+        "column": 8
+      }
+    },
+    "e37c76755968": {
+      "type": "attribute",
+      "sourceText": "Overall city efficiency rating",
+      "context": {
+        "attributeName": "subtitle",
+        "componentName": "InsightsTray",
+        "filePath": "../components/command-center/insights-tray.tsx"
+      },
+      "hash": "e37c76755968",
+      "location": {
+        "filePath": "../components/command-center/insights-tray.tsx",
+        "line": 48,
+        "column": 8
+      }
     }
   },
   "stats": {
-    "totalEntries": 98,
-    "lastUpdated": "2026-02-07T15:13:55.042Z"
+    "totalEntries": 154,
+    "lastUpdated": "2026-02-07T15:25:55.030Z"
   }
 }
