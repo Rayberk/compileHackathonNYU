@@ -13,20 +13,20 @@ function StatCard({ title, value, colorClass }: StatCardProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`p-4 rounded-lg text-center ${colorClass}`}
+      className={`p-2 rounded-lg text-center ${colorClass}`}
     >
-      <p className="text-xs font-bold uppercase tracking-wider opacity-80">
+      <p className="text-[10px] font-bold uppercase tracking-wider opacity-80">
         {title}
       </p>
-      <p className="text-2xl font-black mt-1">{value}</p>
+      <p className="text-lg font-black mt-0.5">{value}</p>
     </motion.div>
   );
 }
 
 export function StatsOverlay() {
   return (
-    <div className="absolute top-4 right-4 z-10">
-      <div className="grid grid-cols-2 gap-3">
+    <div className="absolute top-24 right-4 z-30 w-56">
+      <div className="flex flex-col gap-3">
         <StatCard
           title="Active Routes"
           value={142}

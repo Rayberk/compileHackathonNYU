@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { LingoProvider } from "@lingo.dev/compiler/react";
 import { Navbar } from "@/components/navbar";
 import "./globals.css";
 
@@ -29,19 +28,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.className} antialiased`}>
-        <LingoProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navbar />
-            <main className="pt-0">
-              {children}
-            </main>
-          </ThemeProvider>
-        </LingoProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          <main className="pt-0">
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );

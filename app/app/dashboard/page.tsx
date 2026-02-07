@@ -3,7 +3,6 @@ import { createClient } from "@/lib/supabase/server";
 import { CommandCenterMap } from "@/components/command-center/command-center-map";
 import { ChatAgent } from "@/components/command-center/chat-agent";
 import { InsightsTray } from "@/components/command-center/insights-tray";
-import { ControlPanel } from "@/components/command-center/control-panel";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -31,9 +30,6 @@ export default async function DashboardPage() {
 
         {/* Bottom Insights Tray */}
         <InsightsTray />
-
-        {/* Right Control Panel */}
-        <ControlPanel />
       </main>
     </div>
   );

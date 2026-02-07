@@ -2,9 +2,18 @@
 import { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { MAPBOX_TOKEN, MAPBOX_CONFIG, STOP_COLORS, HEATMAP_CONFIG } from "@/lib/mapbox-config";
+import {
+  MAPBOX_TOKEN,
+  MAPBOX_CONFIG,
+  STOP_COLORS,
+  HEATMAP_CONFIG,
+  DUBAI_CENTER,
+  ABU_DHABI_CENTER
+} from "@/lib/mapbox-config";
 import { StopFeature } from "@/lib/supabase/db-types";
 import { StatsOverlay } from "./stats-overlay";
+import { MaintenanceLayer } from "./maintenance-layer";
+import { ControlPanel } from "./control-panel";
 
 // Mock stops data for demonstration
 const MOCK_STOPS: StopFeature[] = [
@@ -57,6 +66,25 @@ export function CommandCenterMap() {
   const map = useRef<mapboxgl.Map | null>(null);
   const [showDensity, setShowDensity] = useState(true);
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [maintenanceVisible, setMaintenanceVisible] = useState(false);
+  const [activeCity, setActiveCity] = useState<"dubai" | "abu-dhabi">("dubai");
+
+  const handleMaintenanceToggle = (visible: boolean) => {
+    setMaintenanceVisible(visible);
+  };
+
+  const handleCityChange = (city: "dubai" | "abu-dhabi") => {
+    setActiveCity(city);
+    if (map.current) {
+      const newCenter = city === "dubai" ? DUBAI_CENTER : ABU_DHABI_CENTER;
+      map.current.flyTo({
+        center: newCenter,
+        zoom: 11,
+        duration: 2000,
+        essential: true,
+      });
+    }
+  };
 
   useEffect(() => {
     if (!mapContainer.current || map.current) return;
@@ -160,6 +188,15 @@ export function CommandCenterMap() {
       <div ref={mapContainer} className="h-full w-full" />
 
       <StatsOverlay />
+
+      {/* Maintenance Layer */}
+      <MaintenanceLayer mapInstance={map.current} visible={maintenanceVisible} />
+
+      {/* Control Panel */}
+      <ControlPanel
+        onMaintenanceToggle={handleMaintenanceToggle}
+        onCityChange={handleCityChange}
+      />
 
       {/* Map controls */}
       <div className="absolute bottom-4 left-4 z-10 bg-slate-900/90 backdrop-blur-lg p-4 rounded-xl border border-slate-700 shadow-2xl">

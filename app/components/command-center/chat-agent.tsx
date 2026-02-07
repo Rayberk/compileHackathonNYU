@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Send, MapPin, Zap, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { findHotspotsTool } from "@/lib/agent/tools";
 
 interface Session {
   id: string;
@@ -23,6 +24,10 @@ interface Message {
     confidence: number;
     predictions: Array<{ label: string; value: number }>;
   };
+}
+
+interface SessionMessages {
+  [sessionId: string]: Message[];
 }
 
 const SESSIONS: Session[] = [
@@ -49,18 +54,36 @@ const MOCK_RESPONSES = [
 
 export function ChatAgent() {
   const [sessions, setSessions] = useState<Session[]>(SESSIONS);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: "1",
-      text: "Hi! I'm your transit planning assistant. Ask me about stop placement, hotspot analysis, or route optimization.",
-      sender: "agent",
+  const [sessionMessages, setSessionMessages] = useState<SessionMessages>({
+    '1': [{ // Business Bay
+      id: '1',
+      text: 'Hi! I\'m your Business Bay transit planning assistant. Ask me about stop placement, hotspot analysis, or route optimization.',
+      sender: 'agent',
       timestamp: new Date(),
-      type: "text",
-    },
-  ]);
+      type: 'text'
+    }],
+    '2': [{ // Reem Island
+      id: '1',
+      text: 'Hi! I\'m your Reem Island transit planning assistant. Ask me about Abu Dhabi infrastructure, E11 routes, or local development needs.',
+      sender: 'agent',
+      timestamp: new Date(),
+      type: 'text'
+    }],
+    '3': [{ // Marina
+      id: '1',
+      text: 'Hi! I\'m your Marina transit planning assistant. Ask me about coastal transit, beach access, or marina-specific needs.',
+      sender: 'agent',
+      timestamp: new Date(),
+      type: 'text'
+    }]
+  });
   const [input, setInput] = useState("");
   const [isThinking, setIsThinking] = useState(false);
   const [mapSynced, setMapSynced] = useState(true);
+
+  // Get active session and its messages
+  const activeSession = sessions.find(s => s.active);
+  const messages = sessionMessages[activeSession?.id || '1'] || [];
 
   const handleSessionSwitch = (sessionId: string) => {
     setSessions((prev) =>
@@ -68,8 +91,11 @@ export function ChatAgent() {
     );
   };
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
+
+    const activeSessionId = sessions.find(s => s.active)?.id || '1';
+    const inputLower = input.toLowerCase();
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -79,25 +105,67 @@ export function ChatAgent() {
       type: "text",
     };
 
-    setMessages((prev) => [...prev, userMessage]);
+    setSessionMessages(prev => ({
+      ...prev,
+      [activeSessionId]: [...(prev[activeSessionId] || []), userMessage]
+    }));
+    setInput("");
     setIsThinking(true);
 
-    // Mock agent response with thinking delay
-    setTimeout(() => {
-      const response = MOCK_RESPONSES[Math.floor(Math.random() * MOCK_RESPONSES.length)];
+    // Simple keyword detection for tool invocation
+    const shouldCallHotspots = inputLower.includes('hotspot') ||
+                              inputLower.includes('gap') ||
+                              inputLower.includes('underserved');
+
+    try {
+      let responseText: string;
+      let mlData: any = undefined;
+
+      if (shouldCallHotspots) {
+        // Call the actual database function
+        responseText = await findHotspotsTool.execute({
+          radius_meters: 500,
+          min_pings: 10
+        });
+      } else {
+        // Fall back to mock responses with delay
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        const response = MOCK_RESPONSES[Math.floor(Math.random() * MOCK_RESPONSES.length)];
+        responseText = response.text;
+        mlData = response.mlData;
+      }
+
       const agentMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: response.text,
+        text: responseText,
         sender: "agent",
         timestamp: new Date(),
-        type: response.mlData ? "ml-prediction" : "text",
-        mlData: response.mlData,
+        type: mlData ? "ml-prediction" : "text",
+        mlData: mlData,
       };
-      setMessages((prev) => [...prev, agentMessage]);
-      setIsThinking(false);
-    }, 2000);
 
-    setInput("");
+      setSessionMessages(prev => ({
+        ...prev,
+        [activeSessionId]: [...(prev[activeSessionId] || []), agentMessage]
+      }));
+    } catch (error) {
+      console.error('Agent tool error:', error);
+      // Fallback to mock response on error
+      const response = MOCK_RESPONSES[0];
+      const agentMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: response.text || "I encountered an error processing your request. Please try again.",
+        sender: "agent",
+        timestamp: new Date(),
+        type: "text",
+      };
+      setSessionMessages(prev => ({
+        ...prev,
+        [activeSessionId]: [...(prev[activeSessionId] || []), agentMessage]
+      }));
+    } finally {
+      setIsThinking(false);
+    }
   };
 
   return (
@@ -143,8 +211,16 @@ export function ChatAgent() {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map((message) => (
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeSession?.id}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 20 }}
+          transition={{ duration: 0.3 }}
+          className="flex-1 overflow-y-auto p-4 space-y-4"
+        >
+          {messages.map((message) => (
           <div
             key={message.id}
             className={`flex ${
@@ -220,9 +296,7 @@ export function ChatAgent() {
               </div>
             )}
           </div>
-        ))}
-
-        {/* Thinking Indicator */}
+        ))}{/* Thinking Indicator */}
         <AnimatePresence>
           {isThinking && (
             <motion.div
@@ -257,10 +331,11 @@ export function ChatAgent() {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+        </motion.div>
+      </AnimatePresence>
 
       {/* Input */}
-      <div className="p-4 border-t border-white/10">
+      <div className="p-4 border-t border-white/10 bg-slate-950/80 backdrop-blur-md">
         <div className="flex gap-2">
           <Input
             value={input}
@@ -276,6 +351,16 @@ export function ChatAgent() {
           >
             <Send className="h-4 w-4" />
           </Button>
+        </div>
+
+        {/* Powered By Row */}
+        <div className="flex items-center justify-center gap-2 mt-3 pt-3 border-t border-white/5">
+          <p className="text-[10px] text-white/30 uppercase tracking-wider">
+            <span>Powered by</span>
+          </p>
+          <p className="text-xs text-white/40 font-semibold">
+            <span>Lingo.dev + Next.js</span>
+          </p>
         </div>
       </div>
     </div>
