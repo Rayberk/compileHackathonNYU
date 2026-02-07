@@ -5,61 +5,38 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import {
   MAPBOX_TOKEN,
   MAPBOX_CONFIG,
-  STOP_COLORS,
   HEATMAP_CONFIG,
   DUBAI_CENTER,
   ABU_DHABI_CENTER
 } from "@/lib/mapbox-config";
-import { StopFeature } from "@/lib/supabase/db-types";
 import { StatsOverlay } from "./stats-overlay";
 import { MaintenanceLayer } from "./maintenance-layer";
 import { ControlPanel } from "./control-panel";
 
-// Mock stops data for demonstration
-const MOCK_STOPS: StopFeature[] = [
-  {
-    type: "Feature",
-    geometry: { type: "Point", coordinates: [55.2708, 25.2048] },
-    properties: {
-      id: "1",
-      stop_id: "BB001",
-      stop_name: "Business Bay Metro",
-      stop_name_ar: "محطة مترو الخليج التجاري",
-      stop_type: "AC Shelter",
-      is_active: true,
-      last_maintained: null,
-      metadata: null,
-    },
-  },
-  {
-    type: "Feature",
-    geometry: { type: "Point", coordinates: [55.2758, 25.2098] },
-    properties: {
-      id: "2",
-      stop_id: "BB002",
-      stop_name: "Bay Avenue",
-      stop_name_ar: "شارع الخليج",
-      stop_type: "Pole",
-      is_active: true,
-      last_maintained: null,
-      metadata: null,
-    },
-  },
-  {
-    type: "Feature",
-    geometry: { type: "Point", coordinates: [55.2658, 25.2008] },
-    properties: {
-      id: "3",
-      stop_id: "BB003",
-      stop_name: "Business Tower",
-      stop_name_ar: "برج الأعمال",
-      stop_type: "AC Shelter",
-      is_active: true,
-      last_maintained: null,
-      metadata: null,
-    },
-  },
-];
+type FeatureCollection<TFeature> = {
+  type: "FeatureCollection";
+  features: TFeature[];
+};
+
+type BusStopFeature = {
+  type: "Feature";
+  geometry: { type: "Point"; coordinates: [number, number] };
+  properties: {
+    stop_id: string;
+    stop_name: string;
+    bus_stop_type?: string | null;
+    routes?: string[];
+  };
+};
+
+type BusGeoJSONResponse = {
+  stops: FeatureCollection<BusStopFeature>;
+  meta: {
+    stops_count: number;
+    routes_count: number;
+    source_file: string;
+  };
+};
 
 export function CommandCenterMap() {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -67,7 +44,7 @@ export function CommandCenterMap() {
   const [showDensity, setShowDensity] = useState(true);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [maintenanceVisible, setMaintenanceVisible] = useState(false);
-  const [activeCity, setActiveCity] = useState<"dubai" | "abu-dhabi">("dubai");
+  const [, setActiveCity] = useState<"dubai" | "abu-dhabi">("dubai");
 
   const handleMaintenanceToggle = (visible: boolean) => {
     setMaintenanceVisible(visible);
@@ -99,42 +76,74 @@ export function CommandCenterMap() {
     });
 
     initializeMap.on("load", () => {
-      // Add stop markers
-      MOCK_STOPS.forEach((stop) => {
-        const stopType = stop.properties.stop_type || "Pole";
-        const color = STOP_COLORS[stopType] || "#3b82f6";
+      const addBusLayers = async () => {
+        try {
+          const response = await fetch("/api/transit/bus", { cache: "no-store" });
+          if (!response.ok) throw new Error(`Failed to load bus data (${response.status})`);
+          const data = (await response.json()) as BusGeoJSONResponse;
 
-        // Create marker
-        const el = document.createElement("div");
-        el.className = "marker";
-        el.style.backgroundColor = color;
-        el.style.width = "14px";
-        el.style.height = "14px";
-        el.style.borderRadius = "50%";
-        el.style.border = "2px solid white";
-        el.style.boxShadow = "0 2px 4px rgba(0,0,0,0.3)";
-        el.style.cursor = "pointer";
+          if (!initializeMap.getSource("bus-stops")) {
+            initializeMap.addSource("bus-stops", {
+              type: "geojson",
+              data: data.stops,
+            });
+          }
 
-        new mapboxgl.Marker(el)
-          .setLngLat(stop.geometry.coordinates as [number, number])
-          .setPopup(
-            new mapboxgl.Popup({ offset: 25 }).setHTML(
-              `<div class="p-2">
-                <h3 class="font-bold text-sm">${stop.properties.stop_name}</h3>
-                <p class="text-xs text-gray-600">${stop.properties.stop_name_ar}</p>
-                <p class="text-xs mt-1"><span class="font-semibold">Type:</span> ${stopType}</p>
-              </div>`
-            )
-          )
-          .addTo(initializeMap);
-      });
+          if (!initializeMap.getLayer("bus-stops-layer")) {
+            initializeMap.addLayer({
+              id: "bus-stops-layer",
+              type: "circle",
+              source: "bus-stops",
+              paint: {
+                "circle-radius": 3,
+                "circle-color": "#3b82f6",
+                "circle-stroke-width": 1,
+                "circle-stroke-color": "#ffffff",
+                "circle-opacity": 0.9,
+              },
+            });
+          }
+
+          // Popup on stop click
+          initializeMap.on("click", "bus-stops-layer", (e) => {
+            const feature = e.features?.[0] as unknown as BusStopFeature | undefined;
+            if (!feature) return;
+
+            const coordinates = feature.geometry.coordinates.slice() as [number, number];
+            const routes = (feature.properties.routes ?? []).slice(0, 8).join(", ");
+
+            new mapboxgl.Popup({ offset: 16 })
+              .setLngLat(coordinates)
+              .setHTML(
+                `<div class="p-2">
+                  <h3 class="font-bold text-sm">${feature.properties.stop_name}</h3>
+                  <p class="text-xs text-gray-600">Stop ID: ${feature.properties.stop_id}</p>
+                  ${routes ? `<p class="text-xs mt-1"><span class="font-semibold">Routes:</span> ${routes}</p>` : ""}
+                </div>`
+              )
+              .addTo(initializeMap);
+          });
+
+          initializeMap.on("mouseenter", "bus-stops-layer", () => {
+            initializeMap.getCanvas().style.cursor = "pointer";
+          });
+
+          initializeMap.on("mouseleave", "bus-stops-layer", () => {
+            initializeMap.getCanvas().style.cursor = "";
+          });
+        } catch (error) {
+          console.error("Failed to add bus layers:", error);
+        }
+      };
+
+      void addBusLayers();
 
       // Mock heatmap data source (would be from commuter_pings in production)
       initializeMap.addSource("commuter-density", {
         type: "geojson",
         data: {
           type: "FeatureCollection",
-          features: Array.from({ length: 50 }, (_, i) => ({
+          features: Array.from({ length: 50 }, () => ({
             type: "Feature" as const,
             geometry: {
               type: "Point" as const,
@@ -155,7 +164,7 @@ export function CommandCenterMap() {
         id: "density-heatmap",
         type: "heatmap",
         source: "commuter-density",
-        layout: { visibility: showDensity ? "visible" : "none" },
+        layout: { visibility: "visible" },
         paint: HEATMAP_CONFIG,
       });
 

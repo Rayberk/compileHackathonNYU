@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Send, MapPin, Zap, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { findHotspotsTool } from "@/lib/agent/tools";
 
 interface Session {
   id: string;
@@ -36,24 +35,14 @@ const SESSIONS: Session[] = [
   { id: "3", name: "Marina", icon: <MessageSquare className="w-4 h-4" />, active: false },
 ];
 
-const MOCK_RESPONSES = [
-  { text: "I've identified 3 high-density areas in Business Bay that need additional stops." },
-  {
-    text: "Running ML prediction for this corridor...",
-    mlData: {
-      location: "Al Mustaqbal Street",
-      confidence: 87,
-      predictions: [
-        { label: "Peak Hour Demand", value: 92 },
-        { label: "AC Shelter Priority", value: 78 },
-        { label: "Route Efficiency", value: 85 },
-      ],
-    },
-  },
-];
+type AgentChatResponse = {
+  response: string;
+  session_id: string;
+};
 
 export function ChatAgent() {
   const [sessions, setSessions] = useState<Session[]>(SESSIONS);
+  const [backendSessionIds, setBackendSessionIds] = useState<Record<string, string>>({});
   const [sessionMessages, setSessionMessages] = useState<SessionMessages>({
     '1': [{ // Business Bay
       id: '1',
@@ -79,7 +68,7 @@ export function ChatAgent() {
   });
   const [input, setInput] = useState("");
   const [isThinking, setIsThinking] = useState(false);
-  const [mapSynced, setMapSynced] = useState(true);
+  const [mapSynced] = useState(true);
 
   // Get active session and its messages
   const activeSession = sessions.find(s => s.active);
@@ -95,7 +84,6 @@ export function ChatAgent() {
     if (!input.trim()) return;
 
     const activeSessionId = sessions.find(s => s.active)?.id || '1';
-    const inputLower = input.toLowerCase();
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -112,36 +100,38 @@ export function ChatAgent() {
     setInput("");
     setIsThinking(true);
 
-    // Simple keyword detection for tool invocation
-    const shouldCallHotspots = inputLower.includes('hotspot') ||
-                              inputLower.includes('gap') ||
-                              inputLower.includes('underserved');
-
     try {
-      let responseText: string;
-      let mlData: any = undefined;
+      const upstreamSessionId = backendSessionIds[activeSessionId];
 
-      if (shouldCallHotspots) {
-        // Call the actual database function
-        responseText = await findHotspotsTool.execute({
-          radius_meters: 500,
-          min_pings: 10
-        });
-      } else {
-        // Fall back to mock responses with delay
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        const response = MOCK_RESPONSES[Math.floor(Math.random() * MOCK_RESPONSES.length)];
-        responseText = response.text;
-        mlData = response.mlData;
+      const response = await fetch("/api/agent/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: input,
+          session_id: upstreamSessionId,
+        }),
+      });
+
+      if (!response.ok) {
+        const details = await response.text().catch(() => "");
+        throw new Error(details || `Agent request failed (${response.status})`);
+      }
+
+      const data = (await response.json()) as AgentChatResponse;
+
+      if (data.session_id && !upstreamSessionId) {
+        setBackendSessionIds((prev) => ({
+          ...prev,
+          [activeSessionId]: data.session_id,
+        }));
       }
 
       const agentMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: responseText,
+        text: data.response,
         sender: "agent",
         timestamp: new Date(),
-        type: mlData ? "ml-prediction" : "text",
-        mlData: mlData,
+        type: "text",
       };
 
       setSessionMessages(prev => ({
@@ -150,11 +140,9 @@ export function ChatAgent() {
       }));
     } catch (error) {
       console.error('Agent tool error:', error);
-      // Fallback to mock response on error
-      const response = MOCK_RESPONSES[0];
       const agentMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: response.text || "I encountered an error processing your request. Please try again.",
+        text: "I encountered an error processing your request. Please make sure the Python agent is running on port 8080 and try again.",
         sender: "agent",
         timestamp: new Date(),
         type: "text",

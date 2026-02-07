@@ -77,7 +77,7 @@ export async function POST(request: Request) {
         );
       }
 
-      const result = await engine.localizeObject(obj as Record<string, any>, {
+      const result = await engine.localizeObject(obj as Record<string, unknown>, {
         sourceLocale,
         targetLocale,
       });

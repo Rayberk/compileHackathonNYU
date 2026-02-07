@@ -15,11 +15,13 @@ pip install -r requirements.txt
 ### 2. Configure
 ```bash
 cp .env.example .env
-# Edit .env and add your GOOGLE_API_KEY
+# Edit agent/.env and add your GOOGLE_API_KEY
 ```
 
 ### 3. Run
 ```bash
+# Run from the repo root so Python can import the `agent` package
+cd ..
 python -m uvicorn agent.api_server:app --host 0.0.0.0 --port 8080 --reload
 ```
 
